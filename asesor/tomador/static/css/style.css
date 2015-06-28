@@ -1,0 +1,7 @@
+input[placeholder] { text-overflow: ellipsis; color:#ff8c3f;}
+::-moz-placeholder { text-overflow: ellipsis; color:#ff8c3f;} /* firefox 19+ */
+input:-moz-placeholder { text-overflow: ellipsis; color: #ff8c3f;}
+
+textarea[placeholder] { text-overflow: ellipsis; color:#ff8c3f;}
+::-moz-placeholder { text-overflow: ellipsis; color:#ff8c3f;} /* firefox 19+ */
+textarea:-moz-placeholder { text-overflow: ellipsis; color:#ff8c3f;}

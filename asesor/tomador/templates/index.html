@@ -1,0 +1,104 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Asesor Académico - Universidad de Oriente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+  <meta charset=utf-8 />
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+
+    
+    <link href="{% static "css/theme-style.css" %}" rel="stylesheet">
+    
+    
+    <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
+    <link href="{% static "css/style.css" %}"        rel="stylesheet">
+    <link href="{% static "css/styles.css" %}"       rel="stylesheet">
+
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "img/ico/logo_udo.gif" %}">
+    <link rel="shortcut icon" href="{% static "img/ico/logo_udo.gif" %}">
+
+  </head>
+  <body>     
+  <div id='cssmenu' >
+  <ul class="center-block">
+   <li class='active'><a href="{% url 'index' %}" >Inicio</a></li>
+   <li><a href='#'>Áreas</a></li>
+   <li><a href='#'>Como Funciona?</a></li>
+  </ul>
+</div>
+  <hr>
+     	<h3 class="section-title">Asesor Académico - Universidad de Oriente <a href="{% url 'index' %}">Inicio</a></h3>
+     	<h4 class="section-title">Proyecto para la Toma de Decisiones</h4>
+      	<div class="container">
+        	<div class="row">
+	        	<p class="form-message"></p>
+
+          
+        		 <form  action="" method="POST">
+              {% csrf_token %}
+                  
+          		<div class="col-sm-12 form-group">       
+            	<input type="text" class="form-control input-lg" name="tplanteamiento" placeholder="Titulo del Proyecto" >
+          		</div>
+          		
+          		<div class="col-sm-12 form-group">
+            		<textarea class="form-control" rows="6" name="dplanteamiento" placeholder="Planteamiento del Proyecto" ></textarea>
+          		</div>
+
+          		<div class="col-sm-12 form-group">
+          		  <button type="reset" class="btn btn-primary btn-lg">Cancelar</button>
+            		<button type="submit" class="btn btn-primary btn-lg">Aceptar</button>
+          		</div>
+        		</form>
+         
+            
+             
+
+
+            
+        	</div>
+      </div>
+
+   
+
+    <footer class="footer">
+      <section class="footer-message">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-lg-12">
+              <p>Ingresa el titulo y el planteamiento respectivo, y podras observar a que área pertenece y cuales conocimientos necesitarias para lograrlo. También te decimos en cuales asignaturas podrías encontrar ayuda. </p>
+            </div>
+            
+
+          </div> <!-- /row -->
+        </div> <!-- /container -->
+      </section>
+
+      <section class="copyright">
+        <div class="container">
+          <span>Todos los derechos reservados &copy;</span>
+          <span class="pull-right">Jesus A. Machado - Jenireé C. Ramirez</span>
+        </div>
+      </section>
+
+    </footer>
+  
+
+    
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script src="{% static "js/jquery.scrollTo.js" %}"></script>
+    <script src="{% static "js/jquery.nav.js" %}"></script>
+    <script src="{% static "js/jquery.nicescroll.min.js" %}"></script>
+    <script src="{% static "js/theme-script.js" %}"></script> 
+     <script src="{% static "js/script.js" %}"></script>
+
+  
+  </body>
+</html>

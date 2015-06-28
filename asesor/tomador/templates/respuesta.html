@@ -1,0 +1,293 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Asesor Académico - Universidad de Oriente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+  <meta charset=utf-8 />
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">    
+    <link href="{% static "css/theme-style.css" %}" rel="stylesheet">    
+    <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
+    <link href="{% static "css/style.css" %}"        rel="stylesheet">
+    <link href="{% static "css/styles.css" %}"       rel="stylesheet">    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "img/ico/logo_udo.gif" %}">
+    <link rel="shortcut icon" href="{% static "img/ico/logo_udo.gif" %}">
+     <script src="{% static "js/sigma.min.js" %}"></script>
+    <style type="text/css">
+       #graph {
+    position: relative;
+    width: 1200px;
+    height: 300px;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 10px solid #555;
+  
+    text-align: center;
+    background-color: #fff;
+}
+
+#sigma-container {
+   
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.sigma-scene, .sigma-labels, .sigma-mouse {
+    left: 0;
+}
+    </style>
+  </head>
+  <body>
+    <div id='cssmenu' >
+        <ul class="center-block">
+            <li class='active'><a href="{% url 'index' %}" >Inicio</a></li>
+            <li><a href='#'>Áreas</a></li>
+            <li><a href='#'>Como Funciona?</a></li>
+    
+        </ul>
+    </div>
+    <hr>
+    <h3 class="section-title">Asesor Académico - Universidad de Oriente <a href="{% url 'index' %}">Inicio</a></h3>
+    <h4 class="section-title">Proyecto para la Toma de Decisiones</h4>
+   
+          
+
+        {%block contar%}
+    	   {%if contar %}
+            
+                <div id="graph">
+                    <div id="sigma-container">
+                </div>
+            </div>
+                <script>        
+                    var cont = 0;       
+                    // Let's first initialize sigma:
+                    var s = new sigma({container: 'sigma-container' });
+                    // Then, let's add some data to display:
+                    s.graph.addNode({
+                        // Main attributes:
+                        id: "root",
+                        label: "root",
+                        x: 6,
+                        y: 0,
+                        size: 10,
+                        color: '#18376a',
+                    });
+                   
+                    
+                    {%for i  in contar%}
+                        
+                        s.graph.addNode({
+                            // Main attributes:
+                            id: "{{i}}",
+                            label: "{{i}}",
+                            x: cont,
+                            y: 3,
+                            size: 10,
+                            color: '#0078d7',
+                        });      
+                        cont = cont + 3;                 
+                    {% endfor %}
+                    cont = 0;
+                    {%for i  in contar%}
+                        s.graph.addEdge({
+                            id: "{{i}}edge",
+                            source: "root",
+                            target: "{{i}}",                            
+                            size: 10,                       
+                            color: '#ccc',
+                            hover_color: '#000'    
+                        });                             
+                    {% endfor %}
+
+                    
+                    {%for i in GER %}                        
+                        s.graph.addNode({
+                            // Main attributes:
+                            id: "6{{i}}",
+                            label: "{{i}}",
+                            x: cont,
+                            y: 6,
+                            size: 10,
+                            color: '#0078d7',
+                        });     
+                         s.graph.addEdge({
+                            id: "{{i}}edge",
+                            source: "GER",
+                            target: "6{{i}}",                            
+                            size: 10,                       
+                            color: '#ccc',
+                            hover_color: '#000'    
+                        });  
+                         cont = cont+3;
+                    {% endfor %}
+
+                    {%for i in PRO %}                        
+                        s.graph.addNode({
+                            // Main attributes:
+                            id: "4{{i}}",
+                            label: "{{i}}",
+                            x: cont,
+                            y: 6,
+                            size: 10,
+                            color: '#0078d7',
+                        });     
+                         s.graph.addEdge({
+                            id: "{{i}}edge",
+                            source: "PRO",
+                            target: "4{{i}}",                            
+                            size: 10,                       
+                            color: '#ccc',
+                            hover_color: '#000'    
+                        });  
+                         cont = cont+3;
+                    {% endfor %}
+
+                     {%for i in TRD %}                        
+                        s.graph.addNode({
+                            // Main attributes:
+                            id: "5{{i}}",
+                            label: "{{i}}",
+                            x: cont,
+                            y: 6,
+                            size: 10,
+                            color: '#0078d7',
+                        });     
+                         s.graph.addEdge({
+                            id: "{{i}}edge",
+                            source: "TRD",
+                            target: "5{{i}}",                            
+                            size: 10,                       
+                            color: '#ccc',
+                            hover_color: '#000'    
+                        });  
+                         cont = cont+3;
+                    {% endfor %}
+
+                    {%for i in AIO %}                        
+                        s.graph.addNode({
+                            // Main attributes:
+                            id: "1{{i}}",
+                            label: "{{i}}",
+                            x: cont,
+                            y: 6,
+                            size: 10,
+                            color: '#0078d7',
+                        });     
+                         s.graph.addEdge({
+                            id: "{{i}}edge",
+                            source: "AIO",
+                            target: "1{{i}}",                            
+                            size: 10,                       
+                            color: '#ccc',
+                            hover_color: '#000'    
+                        });  
+                         cont = cont+3;
+                    {% endfor %}
+
+                    {%for i in SIF %}                        
+                        s.graph.addNode({
+                            // Main attributes:
+                            id: "2{{i}}",
+                            label: "{{i}}",
+                            x: cont,
+                            y: 6,
+                            size: 10,
+                            color: '#0078d7',
+                        });     
+                         s.graph.addEdge({
+                            id: "{{i}}edge",
+                            source: "SIF",
+                            target: "2{{i}}",                            
+                            size: 10,                       
+                            color: '#ccc',
+                            hover_color: '#000'    
+                        });  
+                         cont = cont+3;
+                    {% endfor %}
+
+                    {%for i in NTC %}                        
+                        s.graph.addNode({
+                            // Main attributes:
+                            id: "3{{i}}",
+                            label: "{{i}}",
+                            x: cont,
+                            y: 6,
+                            size: 10,
+                            color: '#0078d7',
+                        });     
+                         s.graph.addEdge({
+                            id: "{{i}}edge",
+                            source: "NTC",
+                            target: "3{{i}}",                            
+                            size: 10,                       
+                            color: '#ccc',
+                            hover_color: '#000'    
+                        });  
+                         cont = cont+3;
+                    {% endfor %}
+
+                    
+
+                   
+
+                    
+                    
+                        
+                  
+                    s.refresh();
+                </script>
+
+    	   {%endif%}
+        {%endblock%}
+  
+
+   
+
+    <footer class="footer">
+      <section class="footer-message">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-lg-12">
+              <p>Ingresa el titulo y el planteamiento respectivo, y podras observar a que área pertenece y cuales conocimientos necesitarias para lograrlo. También te decimos en cuales asignaturas podrías encontrar ayuda. </p>
+            </div>
+            
+
+          </div> <!-- /row -->
+        </div> <!-- /container -->
+      </section>
+
+      <section class="copyright">
+        <div class="container">
+          <span>Todos los derechos reservados &copy;</span>
+          <span class="pull-right">Jesus A. Machado - Jenireé C. Ramirez</span>
+        </div>
+      </section>
+
+    </footer>
+  
+
+    
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script src="{% static "js/jquery.scrollTo.js" %}"></script>
+    <script src="{% static "js/jquery.nav.js" %}"></script>
+    <script src="{% static "js/jquery.nicescroll.min.js" %}"></script>
+    <script src="{% static "js/theme-script.js" %}"></script> 
+    <script src="{% static "js/script.js" %}"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $()
+    })
+    </script>
+  
+  </body>
+</html>
